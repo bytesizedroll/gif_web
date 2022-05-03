@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "INDEX PAGE"
+    return "THE INDEX PAGE"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='2424')
