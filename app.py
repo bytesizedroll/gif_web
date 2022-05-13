@@ -18,7 +18,12 @@ def index():
 
 @app.route('/search')
 def search():
-    return "THE SEARCH PAGE"
+    return render_template("search.html")
+
+@app.route('/queryGif')
+def queryGif():
+    print('here')
+    return 'Damien'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='2424')
