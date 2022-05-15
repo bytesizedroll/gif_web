@@ -1,0 +1,8 @@
+#gifCards{
+  text-align:center;
+}
+.card{
+  width: 24rem; 
+  display:inline-block;
+  margin: 10px;
+}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block html_head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='trending.css') }}" />
+{% endblock %}
+{% block content %}
+
+<div id="gifCards">
+</div>
+
+<script>
+
+function loadTrending(){
+  
+  axios.get(`https://api.gfycat.com/v1/reactions/populated`, {
+    params: {
+      tagName: 'trending',
+      gfyCount: '100',
+      }
+    })
+    .then(function (response) {
+      gifs = response.data.gfycats
+      console.log(gifs)
+      for (let i = 0; i < gifs.length; i++){
+	document.getElementById('gifCards').innerHTML += `<div class="card"><img src="${gifs[i]['max5mbGif']}" class="card-img-top" alt="..."> <div class="card-body"><p class="card-text">${gifs[i]['title']}</p> </div> </div>`
+	console.log(gifs[i])
+      }
+    })
+    .catch(function (error) {
+      alert("Problem with request, please consult console for more details...");
+      console.log(error);
+    })
+  }
+loadTrending()
+</script>
+{% endblock %}
