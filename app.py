@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 import random
 import requests
@@ -18,7 +18,11 @@ def index():
 
 @app.route('/search')
 def search():
-    return render_template("search.html")
+    if request.args.get('search_string'):
+        print(request.args.get('search_string'))
+        return render_template("search.html", search_string=request.args.get('search_string'))
+    else:
+        return render_template("search.html")
 
 
 @app.route('/trending')

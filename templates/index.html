@@ -4,9 +4,5 @@
 {% endblock %}
 {% block content %}
 <h1>Welcome to the land of the gifs!</h1>
-<div id="buttons">
-<a class="btn btn-primary" href="{{ url_for('search') }}">Search For A GIF!</a>
-<a class="btn btn-primary" href="{{ url_for('trending') }}">I'm feeling lucky!</a>
-</div>
 <img id='front_gif' src={{front_gif}} alt="front_gif">
 {% endblock %}

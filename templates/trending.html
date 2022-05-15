@@ -21,7 +21,9 @@ function loadTrending(){
       gifs = response.data.gfycats
       console.log(gifs)
       for (let i = 0; i < gifs.length; i++){
-	document.getElementById('gifCards').innerHTML += `<div class="card"><img src="${gifs[i]['max5mbGif']}" class="card-img-top" alt="..."> <div class="card-body"><p class="card-text">${gifs[i]['title']}</p> </div> </div>`
+        title=gifs[i]['title']
+	title_encoded = encodeURIComponent(gifs[i]['title']).replace(/[!'()*]/g, escape)
+	document.getElementById('gifCards').innerHTML += `<div class="card"><img src="${gifs[i]['max5mbGif']}" class="card-img-top" alt="..."> <div class="card-body" onclick="location.href='/search?search_string=${title_encoded}'" style="cursor: pointer;"><p class="card-text">${title}</p> </div> </div>`
 	console.log(gifs[i])
       }
     })
